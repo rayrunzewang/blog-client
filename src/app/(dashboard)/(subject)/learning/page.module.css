@@ -1,0 +1,10 @@
+.main {
+  padding: 60px;
+  background-color: #ffefe2;
+  margin-left: 260px;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}

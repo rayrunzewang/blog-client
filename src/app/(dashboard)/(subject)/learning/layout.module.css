@@ -1,0 +1,21 @@
+.topAndMain {
+  top: 80px;
+  position: fixed;
+  /* height: 100%;
+  left: 0;
+  right: 0; */
+}
+
+.aside {
+  padding: 20px;
+  background-color: lightgray;
+  color: #201c18;
+  width: 260px;
+  font-style: italic;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+
