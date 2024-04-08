@@ -1,18 +1,16 @@
 import styles from './layout.module.css';
+import { Suspense } from 'react';
+import { TagUnorderedList } from '@/components/TagUnorderedList';
+import { Loading } from '@/components/Loading';
 
 const SubjectLayout = ({ children }) => {
   return (
+
     <div>
       <div className={styles.tagManager}>
-        <ul className={styles.ul}>
-          <li className={styles.li}>javascript</li>
-          <li className={styles.li}>node.js</li>
-          <li className={styles.li}>react.js</li>
-          <li className={styles.li}>next.js</li>
-          <li className={styles.li}>MongoDB</li>
-          <li className={styles.li}>GraphQL</li>
-          <li className={styles.li}>Java</li>
-        </ul>
+        <Suspense fallback={<Loading />}>
+          <TagUnorderedList />
+        </Suspense>
       </div>
       {children}
     </div>
