@@ -1,5 +1,5 @@
 import styles from './layout.module.css';
-import Link from 'next/link'
+import Link from 'next/link';
 
 const DashboardLayout = ({
   children
