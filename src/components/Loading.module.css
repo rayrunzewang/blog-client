@@ -1,0 +1,10 @@
+.loading {
+  background-color: #ffefe2;
+  animation: example ease 3s infinite;  
+}
+
+@keyframes example {
+  0% {background-color: #ffefe2;}
+  50% {background-color: #53493f;}
+  100% {background-color: #ffefe2;}
+}
