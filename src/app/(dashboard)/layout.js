@@ -1,26 +1,27 @@
-import styles from './layout.module.css';
 import Link from 'next/link';
+import styles from './layout.module.css';
 
 const DashboardLayout = ({
   children
 }) => {
   return (
-    <section className={styles.learningSection}>
+    <section className={styles.dashboard}>
       <header className={styles.header}>
         <div>
           <span className={styles.logo}>Learning Hub</span>
         </div>
         <nav className={styles.navBar}>
           <ul className={styles.ul}>
-            <li className={styles.li}>theme</li>
-            <li className={styles.li}><Link className={styles.link} href={'#'}>Profile</Link></li>
-            <li className={styles.li}><Link className={styles.link} href={'#'}>Setting</Link></li>
+            <li>theme</li>
+            <li><Link className={styles.link} href={'#'}>Profile</Link></li>
+            <li><Link className={styles.link} href={'#'}>Setting</Link></li>
           </ul>
         </nav>
       </header>
-      {children}
+      <div>
+        {children}
+      </div>
     </section>
   );
 }
-
 export default DashboardLayout;

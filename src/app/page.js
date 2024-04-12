@@ -11,7 +11,7 @@ const page = () => {
         <div className={styles.wrapper}>
           <h1 className={styles.title}>Learning Hub</h1>
           <h2 className={styles.subTitle}>"Study on, I'll handle the reminders."</h2>
-          <Link className={styles.link} href="/learning">start now</Link>
+          <Link className={styles.link} href='/6618a20d992f5c5a8d4ee93d'>start now</Link>
         </div>
       </div>
     </div>
