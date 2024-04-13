@@ -1,5 +1,5 @@
 export async function getArticlesByLanguage(id) {
-  const data = await fetch(`https://learning-hub-study-note-taking-api.onrender.com/learning/language/${id.languageId}/article`, {
+  const data = await fetch(`${process.env.API_BASE_URL}/learning/language/${id.languageId}/article`, {
     headers: {
       'Cache-Control': 'no-cache' 
   }

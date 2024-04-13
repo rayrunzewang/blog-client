@@ -1,5 +1,5 @@
 export async function getArticle(id) {
-  const data = await fetch(`https://learning-hub-study-note-taking-api.onrender.com/learning/article/${id}`, {
+  const data = await fetch(`${process.env.API_BASE_URL}/learning/article/${id}`, {
     headers: {
       'Cache-Control': 'no-cache' 
   }

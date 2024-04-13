@@ -1,4 +1,4 @@
-import styles from './LoadingDiv.module.css';
+import styles from './loadingDiv.module.css';
 
 export const LoadingDiv = () => {
   return (

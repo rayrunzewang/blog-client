@@ -1,5 +1,5 @@
 export async function getLanguages() {
-  const data = await fetch(`https://learning-hub-study-note-taking-api.onrender.com/learning/language`, {
+  const data = await fetch(`${process.env.API_BASE_URL}/learning/language`, {
     headers: {
       'Cache-Control': 'no-cache' 
   }
