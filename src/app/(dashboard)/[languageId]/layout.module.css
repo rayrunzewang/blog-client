@@ -45,7 +45,7 @@
   margin: 20px 20px 10px;
 }
 
-.languageUl {
+.languageUL {
   display: flex;
 }
 
@@ -53,11 +53,16 @@
   list-style-type: none;
 }
 
-.languageList a {
+.LanguageLink {
   display: inline-block;
   padding: 0 15px;
   color: #53493f;
   text-decoration: none;
+}
+
+.activeLanguageLink {
+  color: #ffefe2;
+  background-color: #53493f;
 }
 
 .languageList a:hover {
@@ -66,11 +71,15 @@
   cursor: pointer;
 }
 
-.articleUl {
+.articleULTitle{
+  margin-bottom: 10px;
+}
+
+.articleUL {
   list-style-type: none;
 }
 
-.articleList a {
+.articleLink {
   display: block;
   padding: 5px;
   padding-left: 40px;
@@ -83,7 +92,8 @@
   background-color: #53493f;
   cursor: pointer;
 }
-.articleList .active {
+
+.activeArticleLink {
   color: #ffefe2;
   background-color: #53493f;
   cursor: pointer;

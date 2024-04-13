@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
+import LoadingSpinner from '@/components/loadingUi/LoadingSpinner';
 import styles from './page.module.css';
 
 const page = () => {
@@ -8,14 +9,14 @@ const page = () => {
   const [isLoginDisplay, setIsLoginDisplay] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoginLoading, setIsLoginLoading] = useState(false)
   const [error, setError] = useState('');
   console.log(process.env.NEXT_PUBLIC_API_BASE_URL)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoginLoading(true);
     try {
-      console.log({ username, password })
-
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/login`, {
         method: 'POST',
         headers: {
@@ -23,8 +24,6 @@ const page = () => {
         },
         body: JSON.stringify({ username, password }),
       });
-
-      console.log(response)
 
       if (!response.ok) {
         throw new Error('login failed');
@@ -35,6 +34,7 @@ const page = () => {
       setUsername('');
       setPassword('');
       setError('');
+      setIsLoginLoading(false);
       router.push('/6618a20d992f5c5a8d4ee93d')
     } catch (error) {
       setError(error.message);
@@ -59,7 +59,8 @@ const page = () => {
         </div>
       </div>
       {isLoginDisplay && (
-        <div className={styles.loginContainer}>
+        <div className={styles.loginContainer
+        }>
           <form className={styles.form} onSubmit={handleSubmit}>
             {error && <p>error</p>}
             <label
@@ -86,10 +87,10 @@ const page = () => {
               autoComplete='off'
               onChange={(e) => setPassword(e.target.value)}
             />
-            <input
-              className={styles.loginButton}
+            <button
+              className={styles.button}
               type="submit"
-              value="Login" />
+            >{!isLoginLoading ? 'Login' : <LoadingSpinner />}</button>
           </form>
         </div>
       )}
