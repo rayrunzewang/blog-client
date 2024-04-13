@@ -1,6 +1,6 @@
 export async function getArticlesByLanguage(id) {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/language/${id.languageId}/article`, {
-    next: { revalidate: 10 }, 
+    next: { revalidate: 0 }, 
   });
 
   if (!data.ok) {

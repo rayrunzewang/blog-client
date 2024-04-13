@@ -1,6 +1,6 @@
 export async function getLanguages() {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/language`, {
-    next: { revalidate: 10 }, 
+    next: { revalidate: 0 }, 
   });
 
   if (!data.ok) {

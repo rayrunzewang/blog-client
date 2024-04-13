@@ -5,7 +5,7 @@ export default function page() {
   return (
     <>
       {/* get language.topic */}
-      <p>title</p>
+      <p>Please select an article</p>
     </>
   )
 }
