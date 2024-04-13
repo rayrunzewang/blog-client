@@ -85,12 +85,18 @@
   padding: 10px;
 }
 
-.loginButton {
+.button {
   font-size: 16px;
   color: #ffefe2;
-  padding: 8px 20px;
+  width: 110px;
+  height: 40px;
   background-color: #53493f;
   border-radius: 6px;
   cursor: pointer;
   border: none;
+  transition: all 0.5s ease;
+}
+
+.button:hover {
+  transform: scale(1.1);
 }
