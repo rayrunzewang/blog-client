@@ -1,4 +1,4 @@
-import styles from './loadingText.module.css';
+import styles from './LoadingText.module.css';
 
 export const LoadingText = ({ number }) => {
   return (
