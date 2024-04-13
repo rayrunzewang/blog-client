@@ -14,7 +14,7 @@ const DashboardLayout = ({
           <ul className={styles.ul}>
             <li>theme</li>
             <li><Link className={styles.link} href={'#'}>Profile</Link></li>
-            <li><Link className={styles.link} href={'#'}>Setting</Link></li>
+            <li><Link className={styles.link} href={'/setting'}>Setting</Link></li>
           </ul>
         </nav>
       </header>
