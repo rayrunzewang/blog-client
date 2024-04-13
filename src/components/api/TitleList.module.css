@@ -1,0 +1,14 @@
+.ul {
+  list-style-type: none;
+}
+
+.li {
+  padding: 5px;
+  padding-left: 40px;
+}
+
+.li:hover { 
+  color: #ffefe2;
+  background-color: #53493f;
+  cursor: pointer;
+} 

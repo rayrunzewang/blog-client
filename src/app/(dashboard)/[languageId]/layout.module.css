@@ -1,0 +1,90 @@
+.main {
+  padding: 60px;
+  background-color: #ffefe2;
+  margin-left: 260px;
+  position: fixed;
+  top: 80px;
+  height: 100%;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+
+.languageNav {
+  font-size: 16px;
+  color: #201c18;
+  background-color: #d3bba1;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  position: fixed;
+  top: 50px;
+}
+
+.asideAndMain {
+  top: 80px;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  right: 0;
+}
+
+.aside {
+  padding: 10px;
+  background-color: lightgray;
+  color: #201c18;
+  width: 260px;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+
+.title {
+  margin: 20px 20px 10px;
+}
+
+.languageUl {
+  display: flex;
+}
+
+.languageList {
+  list-style-type: none;
+}
+
+.languageList a {
+  display: inline-block;
+  padding: 0 15px;
+  color: #53493f;
+  text-decoration: none;
+}
+
+.languageList a:hover {
+  color: #ffefe2;
+  background-color: #53493f;
+  cursor: pointer;
+}
+
+.articleUl {
+  list-style-type: none;
+}
+
+.articleList a {
+  display: block;
+  padding: 5px;
+  padding-left: 40px;
+  color: #53493f;
+  text-decoration: none;
+}
+
+.articleList a:hover {
+  color: #ffefe2;
+  background-color: #53493f;
+  cursor: pointer;
+}
+.articleList .active {
+  color: #ffefe2;
+  background-color: #53493f;
+  cursor: pointer;
+}

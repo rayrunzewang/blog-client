@@ -42,7 +42,7 @@
   margin-right: 20px;
 }
 
-.link {
+.button {
   display: block;
   color: #ffefe2;
   text-decoration: none;
@@ -52,4 +52,45 @@
   background-color: #53493f;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+  background-color: #d3bba1;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+.form {
+  width: 200px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.input {
+  border: none;
+  border-radius: 4px;
+  height: 30px;
+  width: 100%;
+  margin-bottom: 20px;
+  outline: none;
+  padding: 10px;
+}
+
+.loginButton {
+  font-size: 16px;
+  color: #ffefe2;
+  padding: 8px 20px;
+  background-color: #53493f;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
 }
