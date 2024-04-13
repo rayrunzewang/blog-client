@@ -4,7 +4,6 @@ import { LoadingText } from '@/components/loadingUi/LoadingText';
 import { LoadingDiv } from '@/components/loadingUi/LoadingDiv';
 import { getLanguages } from '@/utils/getLanguages';
 import { getArticlesByLanguage } from '@/utils/getArticlesByLanguage';
-import Loading from './loading';
 import styles from './layout.module.css';
 
 async function LanguagesList() {
