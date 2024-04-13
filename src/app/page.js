@@ -9,13 +9,14 @@ const page = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  console.log(process.env.NEXT_PUBLIC_API_BASE_URL)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       console.log({ username, password })
 
-      const response = await fetch(`${process.env.API_BASE_URL}/login`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
