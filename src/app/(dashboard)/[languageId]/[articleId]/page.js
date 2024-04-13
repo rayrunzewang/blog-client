@@ -18,7 +18,7 @@ export default function page({ params: { languageId, articleId } }) {
           <p>{article.body}</p>
         </div>
       ) : (
-        <LoadingText number={5} />
+        <LoadingText number={10} />
       )}
     </ul>
   );
