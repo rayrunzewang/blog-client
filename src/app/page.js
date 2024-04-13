@@ -18,7 +18,6 @@ const page = () => {
 
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/login`, {
         method: 'POST',
-        next: { revalidate: 10 },
         headers: {
           'Content-Type': 'application/json',
         },

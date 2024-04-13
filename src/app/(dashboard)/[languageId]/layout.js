@@ -61,9 +61,7 @@ export default function Layout({ children, params: { languageId } }) {
           </Suspense>
         </div>
         <div className={styles.main}>
-          <Suspense>
             {children}
-          </Suspense>
         </div>
       </div>
     </div>
