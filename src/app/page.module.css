@@ -1,13 +1,18 @@
 .homePage {
+  width: 100%;
   display: flex;
-  flex-direction: column;
   background-color: #ffefe2;
   height: 100vh;
   color: #53493f;
+  overflow: hidden;
 }
 
 .container {
-  height: max-content;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,19 +60,46 @@
 }
 
 .loginContainer {
+  position: fixed;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 100%;
+  width: 400px;
+  height: 100Vh;
   background-color: #d3bba1;
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
+  transition: transform 1s ease, opacity 0.5s ease; 
+  transform: translateX(0); 
+  opacity: 1; 
+}
+
+.loginContainer.loginContainerHidden {
+  transform: translateX(400px); 
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.alertContainer {
+  width: 100%;
+  height: 30px;
+}
+
+.alert {
+  color: crimson;
+  margin-bottom: 10px;
+  width: fit-content;
+  background-color: transparent;
+}
+
+.inputCriteria {
+  border-radius: 10px;
+  color: var(--primary-color);
+  height: 20px;
+  margin-bottom: 10px;
 }
 
 .form {
-  width: 200px;
+  width: 300px;
 }
 
 .label {
@@ -83,6 +115,12 @@
   margin-bottom: 20px;
   outline: none;
   padding: 10px;
+}
+
+.input:focus {
+  outline:outset;
+  outline-offset: 3px;
+  outline: 3px solid white;
 }
 
 .button {
