@@ -11,7 +11,6 @@ const page = () => {
   const [password, setPassword] = useState('');
   const [isLoginLoading, setIsLoginLoading] = useState(false)
   const [error, setError] = useState('');
-  console.log(process.env.NEXT_PUBLIC_API_BASE_URL)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -65,7 +64,7 @@ const page = () => {
             {error && <p>error</p>}
             <label
               className={styles.label}
-              for="username"
+              htmlFor="username"
             >Username:</label>
             <input
               className={styles.input}
@@ -77,7 +76,7 @@ const page = () => {
             />
             <label
               className={styles.label}
-              for="password"
+              htmlFor="password"
             >Password:</label>
             <input
               className={styles.input}

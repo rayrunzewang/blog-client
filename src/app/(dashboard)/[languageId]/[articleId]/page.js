@@ -2,6 +2,7 @@
 import React from 'react'
 import { getArticle } from '@/utils/getArticle';
 import { LoadingText } from '@/components/loadingUi/LoadingText';
+import styles from './page.module.css'
 import useSWR from 'swr';
 
 export default function page({ params: { languageId, articleId } }) {
@@ -14,8 +15,8 @@ export default function page({ params: { languageId, articleId } }) {
     <ul>
       {article ? (
         <div>
-          <p>{article.title}</p>
-          <p>{article.body}</p>
+          <p className={styles.title}>{article.title}</p>
+          <p className={styles.body}>{article.body}</p>
         </div>
       ) : (
         <LoadingText number={10} />
