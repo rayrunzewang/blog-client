@@ -36,7 +36,6 @@ async function ArticleList(languageId) {
   const pathname = usePathname()
 
   const data = await getArticlesByLanguage(languageId);
-  console.log(data);
   return (
     <>
       <h2 className={styles.articleULTitle}>{data.title}</h2>
