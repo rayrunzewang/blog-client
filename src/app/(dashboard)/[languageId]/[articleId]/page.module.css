@@ -1,7 +1,40 @@
 .title {
   color: var(--primary-color);
+  text-align: left;
+  margin: 20px 0;
+  font-size: 30px;
 }
 
-.body {
+.paragraph {
   color: var(--primary-color);
+  text-align: left;
+  margin: 10px 0;
+  font-size: 30px;
+}
+
+.EditToolUL {
+  color: var(--primary-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.EditToolList {
+  list-style-type: none;
+  margin-right: 20px;
+  transition: transform 0.5s ease, opacity 0.5s ease; 
+  transform: translateX(0); 
+  opacity: 1; 
+  cursor: pointer;
+}
+
+.EditToolList.EditToolListHidden {
+  transform: translateX(-20px); 
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.EditToolListLock {
+  font-size: 30px;
+  transform: translate(0px, -1px);
 }
