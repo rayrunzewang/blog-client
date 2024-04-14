@@ -1,17 +1,25 @@
 'use client'
-import { useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'
 import LoadingSpinner from '@/components/loadingUi/LoadingSpinner';
 import styles from './page.module.css';
 
 const page = () => {
   const router = useRouter()
+  const inputRef = useRef(null);
   const [isLoginDisplay, setIsLoginDisplay] = useState(false);
   const [username, setUsername] = useState('');
+  const [usernameFocus, setUsernameFocus] = useState(false);
   const [password, setPassword] = useState('');
+  const [passwordFocus, setPasswordFocus] = useState(false);
   const [isLoginLoading, setIsLoginLoading] = useState(false)
   const [error, setError] = useState('');
-  console.log(process.env.NEXT_PUBLIC_API_BASE_URL)
+
+  useEffect(() => {
+    if(isLoginDisplay){
+      inputRef.current.focus();
+    }
+  }, [isLoginDisplay]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,63 +46,77 @@ const page = () => {
       router.push('/6618a20d992f5c5a8d4ee93d')
     } catch (error) {
       setError(error.message);
-      console.error('login failed', error);
     }
   };
 
   const handleCkick = () => {
-    setIsLoginDisplay(!isLoginDisplay);
+    setIsLoginDisplay(true);
   }
 
   return (
     <div className={styles.homePage}>
-      <div>
+      {/* <div>
         <p className={styles.paragraph}> mock: random qoute API</p>
-      </div>
+      </div> */}
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <h1 className={styles.title}>Learning Hub</h1>
-          <h2 className={styles.subTitle}>"Study on, I'll handle the reminders."</h2>
+          <h2 className={styles.subTitle}>"Study on, I'll handle the memories."</h2>
           <button className={styles.button} onClick={handleCkick} >start now</button>
         </div>
       </div>
-      {isLoginDisplay && (
-        <div className={styles.loginContainer
-        }>
-          <form className={styles.form} onSubmit={handleSubmit}>
-            {error && <p>error</p>}
-            <label
-              className={styles.label}
-              for="username"
-            >Username:</label>
-            <input
-              className={styles.input}
-              type="text"
-              id="username"
-              name="username"
-              autoComplete='off'
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <label
-              className={styles.label}
-              for="password"
-            >Password:</label>
-            <input
-              className={styles.input}
-              type="password"
-              id="password"
-              name="password"
-              autoComplete='off'
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
-              className={styles.button}
-              type="submit"
-            >{!isLoginLoading ? 'Login' : <LoadingSpinner />}</button>
-          </form>
-        </div>
-      )}
-
+      <div className={`${styles.loginContainer} ${!isLoginDisplay && styles.loginContainerHidden}`
+      }>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <label
+            className={styles.label}
+            htmlFor="username"
+          >Username:</label>
+          <div
+            className={styles.inputCriteria}
+          >{usernameFocus && <span >
+            minimum 3 characters
+          </span>}
+          </div>
+          <input
+            className={styles.input}
+            type="text"
+            id="username"
+            name="username"
+            autoComplete='off'
+            ref={inputRef}
+            onChange={(e) => setUsername(e.target.value)}
+            onFocus={() => { setUsernameFocus(true) }}
+            onBlur={() => { setUsernameFocus(false) }}
+          />
+          <label
+            className={styles.label}
+            htmlFor="password"
+          >Password:</label>
+          <div className={styles.inputCriteria}>
+            {passwordFocus && <span >
+              including both letter and number
+            </span>}
+          </div>
+          <input
+            className={styles.input}
+            type="password"
+            id="password"
+            name="password"
+            autoComplete='off'
+            onChange={(e) => setPassword(e.target.value)}
+            onFocus={() => { setPasswordFocus(true) }}
+            onBlur={() => { setPasswordFocus(false) }}
+          />
+          <div className={styles.alertContainer}>
+            {error && <p className={styles.alert}>{error}</p>}
+          </div>
+          <button
+            className={styles.button}
+            type="submit"
+          >{!isLoginLoading ? 'Login' : <LoadingSpinner />}</button>
+        </form>
+      </div>
     </div>
   );
 }
