@@ -88,9 +88,10 @@
   width: 400px;
   height: 100Vh;
   background-color: #d3bba1;
-  transition: transform 1s ease, opacity 0.5s ease; 
+  transition: transform 0.8s ease, opacity 0.5s ease; 
   transform: translateX(0); 
   opacity: 1; 
+  z-index: 2;
 }
 
 .loginContainer.loginContainerHidden {
@@ -139,7 +140,6 @@
 }
 
 .input:focus {
-  outline:outset;
   outline-offset: 3px;
   outline: 3px solid white;
 }

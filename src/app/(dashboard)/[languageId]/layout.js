@@ -75,7 +75,7 @@ export default function Layout({ children, params: { languageId } }) {
           </Suspense>
         </div>
         <div className={styles.main}>
-          {children}
+            {children}
         </div>
       </div>
     </div>
