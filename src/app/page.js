@@ -2,12 +2,25 @@
 import { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'
 import LoadingSpinner from '@/components/loadingUi/LoadingSpinner';
+import Link from 'next/link';
 import styles from './page.module.css';
+
+const getQuote = async () => {
+  try {
+    const data = await fetch(process.env.NEXT_PUBLIC_QUOTE_API_BASE_URL, {
+      headers: { 'X-Api-Key': process.env.NEXT_PUBLIC_QUOTE_API_KEY },
+    });
+    return data.json()
+  } catch (error) {
+    console.error(error.message)
+  }
+}
 
 const page = () => {
   const router = useRouter()
   const inputRef = useRef(null);
   const [isLoginDisplay, setIsLoginDisplay] = useState(false);
+  const [quote, setQuote] = useState('');
   const [username, setUsername] = useState('');
   const [usernameFocus, setUsernameFocus] = useState(false);
   const [password, setPassword] = useState('');
@@ -16,10 +29,20 @@ const page = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if(isLoginDisplay){
+    if (isLoginDisplay) {
       inputRef.current.focus();
     }
   }, [isLoginDisplay]);
+
+  useEffect(() => {
+    const fetchQuote = async () => {
+      const [data] = await getQuote();
+      setQuote(data);
+      console.log(data.quote)
+    }
+
+    fetchQuote();
+  }, [])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -55,9 +78,19 @@ const page = () => {
 
   return (
     <div className={styles.homePage}>
-      {/* <div>
-        <p className={styles.paragraph}> mock: random qoute API</p>
-      </div> */}
+      {quote &&
+        <div className={styles.quoteWrapper}>
+          <p className={styles.quote}>"{quote.quote}"</p>
+          <Link
+            className={styles.quoteLink}
+            href={`https://google.com/search?q=` + quote.author}
+            target='_blank'
+          >
+            <span className={styles.quotehyphen}>-</span>
+            <span className={styles.quoteAuthor}>{quote.author}</span>
+          </Link>
+        </div>
+      }
       <div className={styles.container}>
         <div className={styles.wrapper}>
           <h1 className={styles.title}>Learning Hub</h1>
