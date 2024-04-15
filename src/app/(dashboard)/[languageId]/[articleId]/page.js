@@ -17,6 +17,7 @@ export default function page({ params: { languageId, articleId } }) {
     title: '',
     body: ''
   })
+
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data: article, error, mutate } = useSWR(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/article/${articleId}`, fetcher);
@@ -72,6 +73,18 @@ export default function page({ params: { languageId, articleId } }) {
       console.error('Error:', error);
     }
 
+  }
+
+  const handleEdit = () => {
+    setIsEditPanelDisplay(true)
+  }
+
+  const handleEditCancel = () => {
+    setIsEditPanelDisplay(false)
+  }
+
+  const handleSubmit = () => {
+    setIsEditPanelDisplay(false)
   }
 
   // const article = await getArticle(articleId);
@@ -134,6 +147,7 @@ export default function page({ params: { languageId, articleId } }) {
               <div className={styles.alert}>
                 {isError && <p className={styles.alertMessage}>error</p>}
               </div>
+
               <div className={styles.buttonGroup}>
                 <button className={styles.cancelButton} type='button' onClick={handleEditCancel}>Cancel</button>
                 <button className={styles.submitButton}>Submit</button>
