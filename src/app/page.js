@@ -119,7 +119,10 @@ const page = () => {
             autoComplete='off'
             ref={inputRef}
             onChange={(e) => setUsername(e.target.value)}
-            onFocus={() => { setUsernameFocus(true) }}
+            onFocus={() => {
+              setUsernameFocus(true);
+              setError('');
+            }}
             onBlur={() => { setUsernameFocus(false) }}
           />
           <label
@@ -138,7 +141,10 @@ const page = () => {
             name="password"
             autoComplete='off'
             onChange={(e) => setPassword(e.target.value)}
-            onFocus={() => { setPasswordFocus(true) }}
+            onFocus={() => { 
+              setPasswordFocus(true);
+              setError('');
+             }}
             onBlur={() => { setPasswordFocus(false) }}
           />
           <div className={styles.alertContainer}>
