@@ -46,16 +46,15 @@ export default function page({ params: { languageId, articleId } }) {
 
     const formDataToSubmit = {
       title: formData.title || article.title,
-      author: formData.body || article.body
+      body: formData.body || article.body
     };
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/article/${data._id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/article/${article._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include',
         body: JSON.stringify(formDataToSubmit),
       });
 
@@ -63,6 +62,7 @@ export default function page({ params: { languageId, articleId } }) {
 
       if (response.ok) {
         setIsEditPanelDisplay(false);
+        mutate()
       } else {
         setIsError('error');
       }
@@ -72,6 +72,32 @@ export default function page({ params: { languageId, articleId } }) {
       console.error('Error:', error);
     }
 
+  }
+
+  const deletePost = async () => {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/article/${article._id}`, {
+        method: 'DELETE'
+      })
+      
+      if (!res.ok) {
+        throw new Error('Delete post error');
+      }
+
+      mutate()
+    } catch (error) {
+      console.error('Delete post error:', error)
+    }
+  }
+
+  const handleDelete = async () => {
+    if (window.confirm('Are you sure you want to delete this property?')) {
+      try {
+          await deletePost();
+      } catch (error) {
+          console.error(error)
+      }
+  }
   }
 
   // const article = await getArticle(articleId);
@@ -91,7 +117,10 @@ export default function page({ params: { languageId, articleId } }) {
                 onClick={handleEdit}
               >Edit</li>
 
-              <li className={`${styles.EditToolList} ${isArticleLocked && styles.EditToolListHidden}`}>Delete</li>
+              <li
+                className={`${styles.EditToolList} ${isArticleLocked && styles.EditToolListHidden}`}
+                onClick={handleDelete}
+              >Delete</li>
             </ul>
             <article>
               <h2 className={styles.title}>{article.title}</h2>
@@ -121,12 +150,12 @@ export default function page({ params: { languageId, articleId } }) {
                 onChange={handleChange}
               />
               <label
-                htmlFor="paragraph"
+                htmlFor="body"
                 className={styles.label}
               >Body:</label>
               <textarea
-                name='paragraph'
-                id='paragraph'
+                name='body'
+                id='body'
                 className={styles.editPanelContent}
                 defaultValue={article && article.body}
                 onChange={handleChange}
