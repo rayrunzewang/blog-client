@@ -1,0 +1,53 @@
+.settingSection {
+  color: var(--primary-color);
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  height: 100%;
+  padding: 20px 5%;
+  background-color: var(--auxiliary-color);
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.settingUL {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.settingList {
+  list-style-type: none;
+}
+
+.settingList:hover {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: var(--tertiary-color);
+}
+
+.settingList a {
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.settingPanel {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--tertiary-color);
+}
+
+.active {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: var(--tertiary-color);
+  border-bottom: none;
+}

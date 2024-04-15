@@ -1,13 +1,18 @@
 .homePage {
+  width: 100%;
   display: flex;
-  flex-direction: column;
   background-color: #ffefe2;
   height: 100vh;
   color: #53493f;
+  overflow: hidden;
 }
 
 .container {
-  height: max-content;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,16 +38,36 @@
   font-size: 18px;
 }
 
-.paragraph {
-  display: block;
-  padding: 20px 0;
-  width: fit-content;
+.quoteWrapper {
+  position: absolute;
+  font-size: 14px;
+  top: 50px;
+  right: 50px;
+  width: 300px;
   font-style: italic;
   margin-left: auto;
-  margin-right: 20px;
+  z-index: 1;
 }
 
-.link {
+.quote {
+  margin-bottom: 10px;
+}
+
+.quoteLink {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.quotehyphen {
+  margin-right: 10px;
+}
+
+.quoteAuthor {
+  text-align: right;
+  text-decoration: underline;
+}
+
+.button {
   display: block;
   color: #ffefe2;
   text-decoration: none;
@@ -52,4 +77,85 @@
   background-color: #53493f;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.loginContainer {
+  position: fixed;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 100Vh;
+  background-color: #d3bba1;
+  transition: transform 0.8s ease, opacity 0.5s ease; 
+  transform: translateX(0); 
+  opacity: 1; 
+  z-index: 2;
+}
+
+.loginContainer.loginContainerHidden {
+  transform: translateX(400px); 
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.alertContainer {
+  width: 100%;
+  height: 30px;
+}
+
+.alert {
+  color: crimson;
+  margin-bottom: 10px;
+  width: fit-content;
+  background-color: transparent;
+}
+
+.inputCriteria {
+  border-radius: 10px;
+  color: var(--primary-color);
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.form {
+  width: 300px;
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.input {
+  border: none;
+  border-radius: 4px;
+  height: 30px;
+  width: 100%;
+  margin-bottom: 30px;
+  outline: none;
+  padding: 10px;
+}
+
+.input:focus {
+  outline-offset: 3px;
+  outline: 3px solid white;
+}
+
+.button {
+  font-size: 16px;
+  color: #ffefe2;
+  width: 110px;
+  height: 40px;
+  background-color: #53493f;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+.button:hover {
+  transform: scale(1.1);
 }

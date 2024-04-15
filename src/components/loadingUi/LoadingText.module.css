@@ -1,0 +1,19 @@
+.loadingContainer {
+  width: 100%;
+}
+
+.loadingItem {
+  width: 80%; 
+  height: 20px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: var(--tertiary-color);
+  animation: pulse ease 3s infinite;  
+}
+
+@keyframes pulse {
+  0% {background-color: var(--tertiary-color);}
+  50% {background-color: var(--secondary-color);}
+  100% {background-color: var(--tertiary-color);}
+}

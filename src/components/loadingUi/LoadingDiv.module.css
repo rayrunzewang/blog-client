@@ -1,0 +1,12 @@
+.loading {
+  width: 100%;
+  height: 100%;
+  background-color: var(--tertiary-color);
+  animation: pulse ease 3s infinite;  
+}
+
+@keyframes pulse {
+  0% {background-color: var(--tertiary-color);}
+  50% {background-color: var(--secondary-color);}
+  100% {background-color: var(--tertiary-color);}
+}
