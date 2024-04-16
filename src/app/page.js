@@ -108,7 +108,7 @@ const page = () => {
           <div
             className={styles.inputCriteria}
           >{usernameFocus && <span >
-            minimum 3 characters
+            Username or Email
           </span>}
           </div>
           <input
@@ -131,7 +131,7 @@ const page = () => {
           >Password:</label>
           <div className={styles.inputCriteria}>
             {passwordFocus && <span >
-              including both letter and number
+              
             </span>}
           </div>
           <input

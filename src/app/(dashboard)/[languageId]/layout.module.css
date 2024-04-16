@@ -49,6 +49,28 @@
   display: flex;
 }
 
+.addArticle {
+  color: var(--secondary-color);
+  padding: 2px 4px;
+  margin-bottom: 10px;
+  min-width: 60px;
+  height: 20px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.addArticle:hover {
+  outline-offset: 3px;
+  outline: 2px solid var(--primary-color);
+}
+
+.addArticle:focus {
+  outline-offset: 3px;
+  outline: 2px solid var(--primary-color);
+}
+
 .languageList {
   list-style-type: none;
 }
@@ -71,12 +93,17 @@
   cursor: pointer;
 }
 
-.articleULTitle{
+.articleULTitle {
   margin-bottom: 10px;
 }
 
 .articleUL {
   list-style-type: none;
+}
+
+.articleList {
+  display: flex;
+  align-items: center;
 }
 
 .articleLink {
@@ -85,6 +112,7 @@
   padding-left: 40px;
   color: var(--primary-color);
   text-decoration: none;
+  flex: 1;
 }
 
 .articleList a:hover {
@@ -97,4 +125,10 @@
   color: var(--tertiary-color);
   background-color: var(--primary-color);
   cursor: pointer;
+}
+
+.articleDeleteButton {
+  cursor: pointer;
+  text-align: center;
+  margin: 0 10px;
 }

@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { getArticle } from '@/utils/getArticle';
 // import { LoadingText } from '@/components/loadingUi/LoadingText';
-import styles from './page.module.css'
+import styles from './page.module.css';
 import { CiLock } from "react-icons/ci";
 import { CiUnlock } from "react-icons/ci";
-
 import useSWR from 'swr';
 
 export default function page({ params: { languageId, articleId } }) {
@@ -17,9 +17,16 @@ export default function page({ params: { languageId, articleId } }) {
     title: '',
     body: ''
   })
+
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-  const { data: article, error, mutate } = useSWR(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/article/${articleId}`, fetcher);
+  const { data: article, error, mutate } = useSWR(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/article/${articleId}`, fetcher,
+  {
+    refreshInterval:500
+  }
+  );
+
+  const router = useRouter();
 
   const handleLockClick = () => {
     setIsArticleLocked(!isArticleLocked);
@@ -74,31 +81,7 @@ export default function page({ params: { languageId, articleId } }) {
 
   }
 
-  const deletePost = async () => {
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/article/${article._id}`, {
-        method: 'DELETE'
-      })
-      
-      if (!res.ok) {
-        throw new Error('Delete post error');
-      }
 
-      mutate()
-    } catch (error) {
-      console.error('Delete post error:', error)
-    }
-  }
-
-  const handleDelete = async () => {
-    if (window.confirm('Are you sure you want to delete this property?')) {
-      try {
-          await deletePost();
-      } catch (error) {
-          console.error(error)
-      }
-  }
-  }
 
   // const article = await getArticle(articleId);
   return (
@@ -106,22 +89,20 @@ export default function page({ params: { languageId, articleId } }) {
       <ul>
         {article ? (
           <div>
-            <ul className={`${styles.EditToolUL} ${isArticleLocked && styles.EditToolULHidden}`}>
-              <li
-                className={`${styles.EditToolList} ${styles.EditToolListLock}`}
-                onClick={handleLockClick}
-              >{isArticleLocked ? <CiLock /> : <CiUnlock />}</li>
+            {!article?.error &&
+              <ul className={`${styles.EditToolUL} ${isArticleLocked && styles.EditToolULHidden}`}>
+                <li
+                  className={`${styles.EditToolList} ${styles.EditToolListLock}`}
+                  onClick={handleLockClick}
+                >{isArticleLocked ? <CiLock /> : <CiUnlock />}</li>
 
-              <li
-                className={`${styles.EditToolList} ${isArticleLocked && styles.EditToolListHidden}`}
-                onClick={handleEdit}
-              >Edit</li>
+                <li
+                  className={`${styles.EditToolList} ${isArticleLocked && styles.EditToolListHidden}`}
+                  onClick={handleEdit}
+                >Edit</li>
 
-              <li
-                className={`${styles.EditToolList} ${isArticleLocked && styles.EditToolListHidden}`}
-                onClick={handleDelete}
-              >Delete</li>
-            </ul>
+              </ul>
+            }
             <article>
               <h2 className={styles.title}>{article.title}</h2>
               <p className={styles.paragraph}>{article.body}</p>
