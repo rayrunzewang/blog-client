@@ -1,0 +1,8 @@
+.infoContainer {
+  padding: 20px;
+  width: 80%;
+  height: 100px;
+  background-color: var(--secondary-color);
+  border-radius: 20px;
+  margin: 20px auto;
+}

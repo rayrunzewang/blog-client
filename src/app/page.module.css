@@ -85,7 +85,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
+  width: 350px;
   height: 100Vh;
   background-color: #d3bba1;
   transition: transform 0.8s ease, opacity 0.5s ease; 

@@ -50,3 +50,16 @@
   color: var(--tertiary-color);
   background-color: var(--primary-color);
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 80px;
+  }
+
+  .logoWrapper {
+    margin: 10px 0;
+  }
+}

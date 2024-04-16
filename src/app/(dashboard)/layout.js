@@ -29,7 +29,7 @@ const DashboardLayout = ({
   return (
     <section className={styles.dashboard} data-theme={isDarkMode && 'dark'}>
       <header className={styles.header}>
-        <div>
+        <div className={styles.logoWrapper}>
           <span className={styles.logo} onClick={handleLogoClick} >Learning Hub</span>
         </div>
         <nav className={styles.navBar}>
