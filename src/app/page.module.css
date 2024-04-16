@@ -153,9 +153,9 @@
   border-radius: 6px;
   cursor: pointer;
   border: none;
-  transition: all 0.5s ease;
 }
 
 .button:hover {
-  transform: scale(1.1);
+  outline-offset: 3px;
+  outline: 3px solid var(--primary-color);
 }
