@@ -42,8 +42,7 @@ function LanguagesList() {
         </ul>
       }
     </>
-  )
-
+  );
 };
 
 function ArticleList({ languageId }) {
@@ -56,7 +55,7 @@ function ArticleList({ languageId }) {
       refreshInterval: 500,
     });
 
-  const pathname = usePathname()
+  const pathname = usePathname();
   const handleAddArticle = async () => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/article`, {
@@ -142,11 +141,11 @@ function ArticleList({ languageId }) {
         </div>
       }
     </>
-  )
+  );
 };
 
 export default function Layout({ children, params: { languageId } }) {
-  const [isArticleListDisplay, setIsArticleListDisplay] = useState(false)
+  const [isArticleListDisplay, setIsArticleListDisplay] = useState(false);
 
   const handleArticleToggle = () => {
     setIsArticleListDisplay(!isArticleListDisplay);

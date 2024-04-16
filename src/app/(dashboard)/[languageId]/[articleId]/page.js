@@ -65,23 +65,17 @@ export default function page({ params: { languageId, articleId } }) {
         body: JSON.stringify(formDataToSubmit),
       });
 
-      console.log(response)
-
       if (response.ok) {
         setIsEditPanelDisplay(false);
         mutate()
       } else {
         setIsError('error');
       }
-
     } catch (error) {
       setIsError('error');
       console.error('Error:', error);
     }
-
   }
-
-
 
   // const article = await getArticle(articleId);
   return (
@@ -100,7 +94,6 @@ export default function page({ params: { languageId, articleId } }) {
                   className={`${styles.EditToolList} ${isArticleLocked && styles.EditToolListHidden}`}
                   onClick={handleEdit}
                 >Edit</li>
-
               </ul>
             }
             <article>
