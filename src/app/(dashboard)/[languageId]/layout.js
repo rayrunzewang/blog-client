@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense } from 'react';
+import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
@@ -146,6 +146,11 @@ function ArticleList({ languageId }) {
 };
 
 export default function Layout({ children, params: { languageId } }) {
+  const [isArticleListDisplay, setIsArticleListDisplay] = useState(false)
+
+  const handleArticleToggle = () => {
+    setIsArticleListDisplay(!isArticleListDisplay);
+  }
 
   return (
     <div>
@@ -155,12 +160,16 @@ export default function Layout({ children, params: { languageId } }) {
         </Suspense>
       </div>
       <div className={styles.asideAndMain}>
-        <div className={styles.aside}>
-          <Suspense fallback={<LoadingText number={5} />}>
-            <ArticleList languageId={languageId} />
-          </Suspense>
-        </div>
+          <div className={`${styles.aside} ${!isArticleListDisplay && styles.asideHide}`}>
+            <Suspense fallback={<LoadingText number={5} />}>
+              <ArticleList languageId={languageId} />
+            </Suspense>
+          </div>
         <div className={styles.main}>
+          <button
+            className={styles.ArticleToggle}
+            onClick={handleArticleToggle}
+          >Articles</button>
           {children}
         </div>
       </div>
