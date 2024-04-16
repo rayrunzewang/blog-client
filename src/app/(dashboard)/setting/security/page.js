@@ -1,6 +1,6 @@
 const page = () => {
   return (
-    <div>setting page main</div>
+    <div>security</div>
   );
 }
 

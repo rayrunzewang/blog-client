@@ -23,27 +23,30 @@ function LanguagesList() {
     });
   return (
     <>
-      {data &&
-        <ul className={styles.languageUL}>
-          {data.length > 0 ? (
-            data.map((language, index) => (
-              <li
-                key={index}
-                className={`${styles.languageList}`}>
-                <Link
-                  className={`${styles.LanguageLink} ${pathname === `/${language._id}` ? `${styles.activeLanguageLink}` : ''}`}
-                  href={`/${language._id}  `}
-                >{language.title}</Link>
-              </li>
-            ))
-          ) : (
-            <p>no data</p>
-          )}
-        </ul>
+      {data ?
+        (
+          <ul className={styles.languageUL}>
+            {data.length > 0 ? (
+              data.map((language, index) => (
+                <li
+                  key={index}
+                  className={`${styles.languageList}`}>
+                  <Link
+                    className={`${styles.LanguageLink} ${pathname === `/${language._id}` ? `${styles.activeLanguageLink}` : ''}`}
+                    href={`/${language._id}  `}
+                  >{language.title}</Link>
+                </li>
+              ))
+            ) : (
+              <p>no data</p>
+            )}
+          </ul>
+        ) : (
+          <LoadingDiv />
+        )
       }
     </>
-  )
-
+  );
 };
 
 function ArticleList({ languageId }) {
@@ -56,7 +59,7 @@ function ArticleList({ languageId }) {
       refreshInterval: 500,
     });
 
-  const pathname = usePathname()
+  const pathname = usePathname();
   const handleAddArticle = async () => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/learning/article`, {
@@ -111,42 +114,46 @@ function ArticleList({ languageId }) {
 
   return (
     <>
-      {data &&
-        <div>
-          <h2 className={styles.articleULTitle}>{data.title}</h2>
-          <button onClick={handleAddArticle} className={styles.addArticle}>Add New</button>
-          <ul className={styles.articleUL}>
-            {data.articles.length > 0 ? (
-              data.articles.map((article, index) => (
-                <li
-                  key={index}
-                  className={styles.articleList}>
+      {data ?
+        (
+          <div>
+            <h2 className={styles.articleULTitle}>{data.title}</h2>
+            <button onClick={handleAddArticle} className={styles.addArticle}>Add New</button>
+            <ul className={styles.articleUL}>
+              {data.articles.length > 0 ? (
+                data.articles.map((article, index) => (
+                  <li
+                    key={index}
+                    className={styles.articleList}>
 
-                  <Link
-                    href={`/${languageId}/${article._id}`}
-                    className={`${styles.articleLink} ${pathname === `/${languageId}/${article._id}` ? `${styles.activeArticleLink}` : ''}`}
-                  >{article.title}</Link>
+                    <Link
+                      href={`/${languageId}/${article._id}`}
+                      className={`${styles.articleLink} ${pathname === `/${languageId}/${article._id}` ? `${styles.activeArticleLink}` : ''}`}
+                    >{article.title}</Link>
 
-                  <span
-                    className={styles.articleDeleteButton}
-                    onClick={() => handleDelete(article)}
-                  >
-                    <RiDeleteBinLine />
-                  </span>
-                </li>
-              ))
-            ) : (
-              <p>no data</p>
-            )}
-          </ul>
-        </div>
+                    <span
+                      className={styles.articleDeleteButton}
+                      onClick={() => handleDelete(article)}
+                    >
+                      <RiDeleteBinLine />
+                    </span>
+                  </li>
+                ))
+              ) : (
+                <p>no data</p>
+              )}
+            </ul>
+          </div>
+        ) : (
+          <LoadingText number={5} />
+        )
       }
     </>
-  )
+  );
 };
 
 export default function Layout({ children, params: { languageId } }) {
-  const [isArticleListDisplay, setIsArticleListDisplay] = useState(false)
+  const [isArticleListDisplay, setIsArticleListDisplay] = useState(false);
 
   const handleArticleToggle = () => {
     setIsArticleListDisplay(!isArticleListDisplay);
@@ -155,16 +162,16 @@ export default function Layout({ children, params: { languageId } }) {
   return (
     <div>
       <div className={styles.languageNav}>
-        <Suspense fallback={<LoadingDiv />}>
-          <LanguagesList />
-        </Suspense>
+        {/* <Suspense fallback={<LoadingDiv />}> */}
+        <LanguagesList />
+        {/* </Suspense> */}
       </div>
       <div className={styles.asideAndMain}>
-          <div className={`${styles.aside} ${!isArticleListDisplay && styles.asideHide}`}>
-            <Suspense fallback={<LoadingText number={5} />}>
-              <ArticleList languageId={languageId} />
-            </Suspense>
-          </div>
+        <div className={`${styles.aside} ${!isArticleListDisplay && styles.asideHide}`}>
+          {/* <Suspense fallback={<LoadingText number={5} />}> */}
+          <ArticleList languageId={languageId} />
+          {/* </Suspense> */}
+        </div>
         <div className={styles.main}>
           <button
             className={styles.ArticleToggle}

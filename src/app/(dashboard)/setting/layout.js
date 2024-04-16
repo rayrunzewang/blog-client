@@ -1,11 +1,12 @@
-'use client'
-import React from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import styles from './layout.module.css'
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import styles from './layout.module.css';
 
 const layout = ({ children }) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <div className={styles.settingSection}>
@@ -20,7 +21,7 @@ const layout = ({ children }) => {
         {children}
       </div>
     </div>
-  )
+  );
 }
 
-export default layout
+export default layout;

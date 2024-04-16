@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from './layout.module.css';
@@ -15,9 +16,9 @@ const DashboardLayout = ({
   }
 
   })
-  const router = useRouter()
+  const router = useRouter();
   const handleLogoClick = () => {
-    router.push('/6618a20d992f5c5a8d4ee93d')
+    router.push('/6618a20d992f5c5a8d4ee93d');
   }
 
   const handleThemeChange = () => {
